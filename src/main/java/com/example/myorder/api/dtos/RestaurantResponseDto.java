@@ -1,6 +1,6 @@
 package com.example.myorder.api.dtos;
 
-public class RestaurantResponse {
+public class RestaurantResponseDto {
 
     private Integer id;
     private String name;
@@ -11,7 +11,7 @@ public class RestaurantResponse {
         return id;
     }
 
-    public RestaurantResponse setId(Integer id) {
+    public RestaurantResponseDto setId(Integer id) {
         this.id = id;
         return this;
     }
@@ -20,7 +20,7 @@ public class RestaurantResponse {
         return name;
     }
 
-    public RestaurantResponse setName(String name) {
+    public RestaurantResponseDto setName(String name) {
         this.name = name;
         return this;
     }
@@ -29,7 +29,7 @@ public class RestaurantResponse {
         return phone;
     }
 
-    public RestaurantResponse setPhone(String phone) {
+    public RestaurantResponseDto setPhone(String phone) {
         this.phone = phone;
         return this;
     }
@@ -38,7 +38,7 @@ public class RestaurantResponse {
         return email;
     }
 
-    public RestaurantResponse setEmail(String email) {
+    public RestaurantResponseDto setEmail(String email) {
         this.email = email;
         return this;
     }
