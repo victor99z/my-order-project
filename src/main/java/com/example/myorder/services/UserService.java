@@ -20,7 +20,6 @@ public class UserService {
 
     public UserResponseDto create(CreateUserDto createUserDto){
         validateUserEmail(createUserDto.getEmail());
-        userRepository.save(createUser(createUserDto));
 
         User user = userRepository.save(createUser(createUserDto));
 
