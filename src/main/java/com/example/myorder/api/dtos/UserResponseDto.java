@@ -21,4 +21,48 @@ public class UserResponseDto {
     @ApiModelProperty(value = "${user.create.adress}")
     private String adress;
 
+    public Integer getId() {
+        return id;
+    }
+
+    public UserResponseDto setId(Integer id) {
+        this.id = id;
+        return this;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public UserResponseDto setName(String name) {
+        this.name = name;
+        return this;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public UserResponseDto setPhone(String phone) {
+        this.phone = phone;
+        return this;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public UserResponseDto setEmail(String email) {
+        this.email = email;
+        return this;
+    }
+
+    public String getAdress() {
+        return adress;
+    }
+
+    public UserResponseDto setAdress(String adress) {
+        this.adress = adress;
+        return this;
+    }
 }
