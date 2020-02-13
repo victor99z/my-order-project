@@ -28,9 +28,10 @@ public class RestaurantService {
 
     public RestaurantResponseDto getById(Integer id){
         Optional<Restaurant> optinal = restaurantRepository.findById(id);
-        Restaurant restaurant = optinal.get();
 
         if(optinal.isPresent()){
+
+            Restaurant restaurant = optinal.get();
             return new RestaurantResponseDto()
                     .setId(restaurant.getId())
                     .setEmail(restaurant.getEmail())

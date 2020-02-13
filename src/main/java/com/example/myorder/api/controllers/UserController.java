@@ -1,7 +1,6 @@
 package com.example.myorder.api.controllers;
 
 
-import com.example.myorder.api.dtos.CreateRestaurantDto;
 import com.example.myorder.api.dtos.CreateUserDto;
 import com.example.myorder.api.dtos.UserResponseDto;
 import com.example.myorder.services.UserService;
@@ -34,7 +33,7 @@ public class UserController {
         return userService.create(createUserDto);
     }
 
-    @ResponseStatus(HttpStatus.CREATED)
+    @ResponseStatus(HttpStatus.OK)
     @GetMapping()
     public UserResponseDto get(
             @RequestParam()

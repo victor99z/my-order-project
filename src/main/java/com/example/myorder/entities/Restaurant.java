@@ -2,8 +2,6 @@ package com.example.myorder.entities;
 
 import javax.persistence.*;
 
-import org.springframework.web.bind.annotation.RequestBody;
-
 @Entity
 @Table(name = "RESTAURANTE")
 public class Restaurant {

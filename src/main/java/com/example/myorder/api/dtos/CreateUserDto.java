@@ -1,7 +1,6 @@
 package com.example.myorder.api.dtos;
 
 import io.swagger.annotations.ApiModelProperty;
-
 import javax.validation.constraints.NotEmpty;
 
 public class CreateUserDto {
@@ -19,8 +18,8 @@ public class CreateUserDto {
     @ApiModelProperty(value = "${user.create.password}")
     private String password;
     @NotEmpty
-    @ApiModelProperty(value = "${user.create.adress}")
-    private String adress;
+    @ApiModelProperty(value = "${user.create.address}")
+    private String address;
 
     public String getName() {
         return name;
@@ -58,12 +57,12 @@ public class CreateUserDto {
         return this;
     }
 
-    public String getAdress() {
-        return adress;
+    public String getAddress() {
+        return address;
     }
 
-    public CreateUserDto setAdress(String adress) {
-        this.adress = adress;
+    public CreateUserDto setAddress(String address) {
+        this.address = address;
         return this;
     }
 }

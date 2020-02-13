@@ -7,11 +7,8 @@ import com.example.myorder.entities.User;
 import com.example.myorder.exception.AlreadyExistsExption;
 import com.example.myorder.exception.NotFoundExpection;
 import com.example.myorder.repositories.UserRepository;
-import jdk.tools.jaotc.ELFMacroAssembler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -35,7 +32,7 @@ public class UserService {
         User user = userRepository.findByEmail(email);
 
         if(user != null){
-            throw new AlreadyExistsExption("Ja existe um usuario cadastro com esse email");
+            throw new AlreadyExistsExption("Ja existe um usuario cadastro com este email");
         }
 
     }
@@ -44,7 +41,7 @@ public class UserService {
         return new User()
                 .setName(createUserDto.getName())
                 .setEmail(createUserDto.getEmail())
-                .setAdress(createUserDto.getPassword())
+                .setAddress(createUserDto.getPassword())
                 .setPassword(createUserDto.getPassword())
                 .setPhone(createUserDto.getPhone());
     }
@@ -58,17 +55,17 @@ public class UserService {
         return UserMapper.toResponseDto(user.get());
     }
 
-//    private User saveUser(User user){
-//        return userRepository.save(user);
-//    }
-
-
 
     public List<UserResponseDto> listAll(){
         List<User> users = userRepository.findAll();
 
+
+        /*
+            funcionamento parecido com o for each, porem com menos linhas
+            UserMapper::toResponseDto, chamo diretamente o metodo da classe e passo o parametro (cada users nessa lista)
+
+        */
         return users.stream().map(UserMapper::toResponseDto).collect(Collectors.toList());
     }
-
 
 }

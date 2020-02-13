@@ -22,8 +22,8 @@ public class User {
     @Column( name = "PASSWORD", nullable = false)
     private String password;
 
-    @Column( name = "ADRESS", nullable = false)
-    private String adress;
+    @Column( name = "ADDRESS", nullable = false)
+    private String address;
 
     public Integer getId() {
         return id;
@@ -70,12 +70,12 @@ public class User {
         return this;
     }
 
-    public String getAdress() {
-        return adress;
+    public String getAddress() {
+        return address;
     }
 
-    public User setAdress(String adress) {
-        this.adress = adress;
+    public User setAddress(String address) {
+        this.address = address;
         return this;
     }
 }
