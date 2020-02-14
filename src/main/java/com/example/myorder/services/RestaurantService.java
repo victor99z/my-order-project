@@ -3,6 +3,8 @@ package com.example.myorder.services;
 import com.example.myorder.api.dtos.CreateRestaurantDto;
 import com.example.myorder.api.dtos.RestaurantResponseDto;
 import com.example.myorder.entities.Restaurant;
+import com.example.myorder.entities.User;
+import com.example.myorder.exception.AlreadyExistsException;
 import com.example.myorder.exception.NotFoundExpection;
 import com.example.myorder.repositories.RestaurantRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +19,7 @@ public class RestaurantService {
     private RestaurantRepository restaurantRepository;
 
     public void createRestaurant(CreateRestaurantDto createRestaurantDto){
-        // TODO: validacoes
+        validateRestaurant(createRestaurantDto.getEmail());
 
         Restaurant restaurant = new Restaurant()
                 .setEmail(createRestaurantDto.getEmail())
@@ -25,6 +27,16 @@ public class RestaurantService {
                 .setPhone(createRestaurantDto.getPhone());
 
         restaurantRepository.save(restaurant);
+
+    }
+
+    public void validateRestaurant(String email){
+        Restaurant restaurant = restaurantRepository.findByEmail(email);
+
+        if(restaurant != null){
+            throw new AlreadyExistsException("Ja existe um usuario cadastro com este email");
+        }
+
     }
 
     public RestaurantResponseDto getById(Integer id){

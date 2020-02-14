@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "ORDER_ITEM")
-public class OrdemItem {
+public class OrderItem {
     @Id
     @GeneratedValue( strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -24,7 +24,7 @@ public class OrdemItem {
         return id;
     }
 
-    public OrdemItem setId(Integer id) {
+    public OrderItem setId(Integer id) {
         this.id = id;
         return this;
     }
@@ -33,7 +33,7 @@ public class OrdemItem {
         return order;
     }
 
-    public OrdemItem setOrder(Order order) {
+    public OrderItem setOrder(Order order) {
         this.order = order;
         return this;
     }
@@ -42,7 +42,7 @@ public class OrdemItem {
         return quantity;
     }
 
-    public OrdemItem setQuantity(Integer quantity) {
+    public OrderItem setQuantity(Integer quantity) {
         this.quantity = quantity;
         return this;
     }
@@ -51,7 +51,7 @@ public class OrdemItem {
         return product;
     }
 
-    public OrdemItem setProduct(Product product) {
+    public OrderItem setProduct(Product product) {
         this.product = product;
         return this;
     }

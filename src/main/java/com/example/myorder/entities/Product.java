@@ -57,4 +57,14 @@ public class Product {
         this.restaurant = restaurant;
         return this;
     }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", value=" + value +
+                ", restaurant=" + restaurant +
+                '}';
+    }
 }

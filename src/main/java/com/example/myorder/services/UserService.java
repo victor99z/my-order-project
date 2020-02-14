@@ -4,7 +4,7 @@ import com.example.myorder.api.dtos.CreateUserDto;
 import com.example.myorder.api.dtos.UserResponseDto;
 import com.example.myorder.api.mappers.UserMapper;
 import com.example.myorder.entities.User;
-import com.example.myorder.exception.AlreadyExistsExption;
+import com.example.myorder.exception.AlreadyExistsException;
 import com.example.myorder.exception.NotFoundExpection;
 import com.example.myorder.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +31,7 @@ public class UserService {
         User user = userRepository.findByEmail(email);
 
         if(user != null){
-            throw new AlreadyExistsExption("Ja existe um usuario cadastro com este email");
+            throw new AlreadyExistsException("Ja existe um usuario cadastro com este email");
         }
 
     }

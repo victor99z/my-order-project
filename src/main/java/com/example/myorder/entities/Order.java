@@ -1,7 +1,6 @@
 package com.example.myorder.entities;
 
 import com.example.myorder.enums.OrderStatusEnum;
-
 import javax.persistence.*;
 import java.util.List;
 
@@ -28,13 +27,13 @@ public class Order {
 
     @OrderBy("id ASC")
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
-    private List<OrdemItem> items;
+    private List<OrderItem> items;
 
-    public List<OrdemItem> getItems() {
+    public List<OrderItem> getItems() {
         return items;
     }
 
-    public Order setItems(List<OrdemItem> items) {
+    public Order setItems(List<OrderItem> items) {
         this.items = items;
         return this;
     }

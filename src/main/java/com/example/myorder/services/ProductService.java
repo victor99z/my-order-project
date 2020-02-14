@@ -13,16 +13,17 @@ import org.springframework.stereotype.Service;
 @Service
 public class ProductService {
 
+
     @Autowired
     private ProductRepository productRepository;
     @Autowired
     private RestaurantService restaurantService;
 
     public ProductResponseDto create(CreateProductDto createProductDto){
-        Product product = productRepository.save(createProduct(createProductDto));
+        Product p1 = createProduct(createProductDto);
+        productRepository.save(p1);
 
-        return ProductMapper.toResponseDto(product);
-
+        return ProductMapper.toResponseDto(p1);
     }
 
     public Product createProduct(CreateProductDto productDto){
@@ -32,9 +33,5 @@ public class ProductService {
                 .setValue(productDto.getValue())
                 .setRestaurant(restaurantService.findById(productDto.getRestaurantId()));
     }
-
-    /*
-        FIX THIS
-     */
 
 }
