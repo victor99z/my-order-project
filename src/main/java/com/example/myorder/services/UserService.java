@@ -3,6 +3,7 @@ package com.example.myorder.services;
 import com.example.myorder.api.dtos.CreateUserDto;
 import com.example.myorder.api.dtos.UserResponseDto;
 import com.example.myorder.api.mappers.UserMapper;
+import com.example.myorder.entities.Restaurant;
 import com.example.myorder.entities.User;
 import com.example.myorder.exception.AlreadyExistsException;
 import com.example.myorder.exception.NotFoundExpection;
@@ -45,15 +46,22 @@ public class UserService {
                 .setPhone(createUserDto.getPhone());
     }
 
-    public UserResponseDto findById(Integer id){
-        Optional<User> user = userRepository.findById(id);
+    public UserResponseDto findUserById(Integer id){
 
-        if(!user.isPresent()){
-            throw new NotFoundExpection("Id não encontrado");
-        }
-        return UserMapper.toResponseDto(user.get());
+        User user = findById(id);
+
+        return UserMapper.toResponseDto(user);
     }
 
+    public User findById(Integer id){
+        Optional<User> optinal = userRepository.findById(id);
+        if(!optinal.isPresent()){
+            throw new NotFoundExpection("Resturante nao encontrado");
+        }
+
+        return optinal.get();
+
+    }
 
     public List<UserResponseDto> listAll(){
         List<User> users = userRepository.findAll();

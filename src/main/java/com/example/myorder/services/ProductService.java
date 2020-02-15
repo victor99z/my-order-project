@@ -6,6 +6,7 @@ import com.example.myorder.api.dtos.RestaurantResponseDto;
 import com.example.myorder.api.mappers.ProductMapper;
 import com.example.myorder.entities.Product;
 import com.example.myorder.entities.Restaurant;
+import com.example.myorder.exception.NotFoundExpection;
 import com.example.myorder.repositories.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -33,5 +34,12 @@ public class ProductService {
                 .setValue(productDto.getValue())
                 .setRestaurant(restaurantService.findById(productDto.getRestaurantId()));
     }
+
+    public Product findById(Integer id){
+        return productRepository.findById(id)
+                .orElseThrow(()-> new NotFoundExpection("Produto não encontrado")); // TODO estudar lambdas expressions no javinha bb
+    }
+
+
 
 }
