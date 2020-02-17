@@ -12,6 +12,4 @@ public interface RestaurantRepository extends JpaRepository<Restaurant, Integer>
     @Query("SELECT u FROM Restaurant u " + "WHERE u.email = :Email")
     public Restaurant findByEmail(@Param("Email") String email);
 
-    // FIX THIS TODO
-
 }

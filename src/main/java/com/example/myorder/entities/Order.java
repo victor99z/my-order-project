@@ -25,6 +25,11 @@ public class Order {
     @JoinColumn(name = "USER_ID", nullable = false)
     private User user;
 
+    /*
+        ManyToOne() relacao de chave estrangeira, varios Orders por um USER_ID
+        TODO: compreender melhor as anotacoes JoinColumn vs OneToMany
+    */
+
     @OrderBy("id ASC")
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
     private List<OrderItem> items;

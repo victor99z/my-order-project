@@ -37,9 +37,8 @@ public class ProductService {
 
     public Product findById(Integer id){
         return productRepository.findById(id)
-                .orElseThrow(()-> new NotFoundExpection("Produto não encontrado")); // TODO estudar lambdas expressions no javinha bb
+                .orElseThrow(()-> new NotFoundExpection("Produto não encontrado"));
+                // TODO: estudar lambdas expressions no javinha
     }
-
-
 
 }

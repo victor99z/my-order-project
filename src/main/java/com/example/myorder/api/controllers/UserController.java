@@ -26,7 +26,7 @@ public class UserController {
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     public UserResponseDto create(
-            @ApiParam(value = "Objeto que contem info do user")
+            @ApiParam(value = "Objeto que contém as informações do usuário")
             @RequestBody
             @Valid
             CreateUserDto createUserDto){
@@ -39,7 +39,7 @@ public class UserController {
             @RequestParam()
             @Param("id")
             Integer id){
-        return userService.findById(id);
+        return userService.findUserById(id);
     }
 
     @ResponseStatus(HttpStatus.OK)
@@ -47,8 +47,6 @@ public class UserController {
     public List<UserResponseDto> list(){
         return userService.listAll();
     }
-
-
 
 
 }

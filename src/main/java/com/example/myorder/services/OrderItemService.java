@@ -17,15 +17,11 @@ public class OrderItemService {
     private OrdemItemRepository ordemItemRepository;
     @Autowired
     private ProductService productService;
-    @Autowired
-    private OrderItemService orderItemService;
 
     public List<OrderItem> createOrderItens(List<CreateOrderItemDto> itens, Order order){
 
-
-
         return itens.stream()
-                .map(createOrderItemDto -> buildOrderItem(CreateOrderItemDto, order))
+                .map(orderItemDto -> buildOrderItem(orderItemDto, order))
                 .collect(Collectors.toList());
     }
 
