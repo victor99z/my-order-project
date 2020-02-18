@@ -1,4 +1,4 @@
-<h1 align="center"> Projeto _**Spring**_ :leaves: </h1>
+<h1 align="center"> Projeto Spring :leaves: </h1>
 
 #### Tecnologias usadas:
 
