@@ -1,6 +1,6 @@
-<h1 align="center"> Projeto Spring :leaves: </h1>
+<h1 align="center"> Projeto _**Spring**_ :leaves: </h1>
 
-> Tecnologias usadas:
+#### Tecnologias usadas:
 
     - Java 8
     - Maven 3.6
@@ -9,8 +9,15 @@
     - Swagger2 (API docs)
     - ModelMapper
 
-> Todo:
+##### Como usar:
+    $ git clone
+    $ mvn install
+    $ mvn spring-boot:run
+
+
+
+##### **Todo**:
 
 - [ ] Finalizar rotas update, delete, listAll e listOne
 - [ ] Front-end em ReactJs, consumindo a nossa api
-- [ ] Autenticação usando JWT
+- [ ] Autenticação usando **JWT**
