@@ -11,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController("ProductController")
 @RequestMapping(RestPath.BASE_PATH + "/product")
@@ -26,6 +27,15 @@ public class ProductController {
     })
     public ProductResponseDto create(@RequestBody @Valid CreateProductDto createProductDto){
         return productService.create(createProductDto);
+    }
+
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping(value = "/list")
+    @ApiResponses({
+            @ApiResponse(code = 200, message = "Listagem executada")
+    })
+    public List<ProductResponseDto> listAll(){
+        return productService.listAll();
     }
 
 

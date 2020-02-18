@@ -12,6 +12,9 @@ import com.example.myorder.repositories.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 public class ProductService {
 
@@ -48,5 +51,10 @@ public class ProductService {
                 // TODO: estudar lambdas expressions no javinha
     }
 
+    public List<ProductResponseDto> listAll(){
+        List<Product> products = productRepository.findAll();
+
+        return products.stream().map(ProductMapper::toResponseDto).collect(Collectors.toList());
+    }
 
 }

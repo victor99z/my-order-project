@@ -16,8 +16,9 @@
 
 
 
-##### **Todo**:
+##### **TODO**:
 
+- [x] Terminar rotas essenciais. GET (List) e POST(Create)
 - [ ] Finalizar rotas update, delete, listAll e listOne
 - [ ] Front-end em ReactJs, consumindo a nossa api
 - [ ] Autenticação usando **JWT**
