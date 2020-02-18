@@ -1,9 +1,8 @@
 package com.example.myorder.services;
 
 import com.example.myorder.api.dtos.CreateOrderDto;
-import com.example.myorder.api.dtos.CreateProductDto;
 import com.example.myorder.api.dtos.OrderResponseDto;
-import com.example.myorder.api.mappers.OrderMapper;
+import com.example.myorder.api.mappers.UserMapper;
 import com.example.myorder.entities.Order;
 import com.example.myorder.entities.OrderItem;
 import com.example.myorder.enums.OrderStatusEnum;
@@ -29,8 +28,12 @@ public class OrderService {
 
         Order order = orderRepository.save(createOrder);
 
-        return new OrderMapper().toResponseDto(order);
-
+        return new OrderResponseDto()
+                .setId(order.getId())
+                .setOrderStatus(order.getStatus())
+                .setTotalValue(order.getTotalValue())
+                .setUserResponse(UserMapper.toResponseDto(order.getUser()))
+                .setItens(orderItemService.buildOrderItemDtos(order.getItems()));
     }
 
     private Order createOrder(CreateOrderDto createOrderDto){

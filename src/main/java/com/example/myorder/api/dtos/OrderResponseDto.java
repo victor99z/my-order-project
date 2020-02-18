@@ -1,11 +1,10 @@
 package com.example.myorder.api.dtos;
 
-import com.example.myorder.entities.Restaurant;
 import com.example.myorder.enums.OrderStatusEnum;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-
 import java.util.List;
+
 
 @ApiModel( value = "Resposta de criação do user")
 public class OrderResponseDto {
@@ -29,40 +28,44 @@ public class OrderResponseDto {
         return id;
     }
 
-    public void setId(Integer id) {
+    public OrderResponseDto setId(Integer id) {
         this.id = id;
+        return this;
     }
 
-    public Double getValue() {
+    public Double getTotalValue() {
         return totalValue;
     }
 
-    public void setValue(Double value) {
-        this.totalValue = value;
+    public OrderResponseDto setTotalValue(Double totalValue) {
+        this.totalValue = totalValue;
+        return this;
     }
 
     public OrderStatusEnum getOrderStatus() {
         return orderStatus;
     }
 
-    public void setOrderStatus(OrderStatusEnum orderStatus) {
+    public OrderResponseDto setOrderStatus(OrderStatusEnum orderStatus) {
         this.orderStatus = orderStatus;
+        return this;
     }
 
     public UserResponseDto getUserResponse() {
         return userResponse;
     }
 
-    public void setUserResponse(UserResponseDto userResponse) {
+    public OrderResponseDto setUserResponse(UserResponseDto userResponse) {
         this.userResponse = userResponse;
+        return this;
     }
 
     public List<OrderItemDto> getItens() {
         return itens;
     }
 
-    public void setItens(List<OrderItemDto> itens) {
+    public OrderResponseDto setItens(List<OrderItemDto> itens) {
         this.itens = itens;
+        return this;
     }
-
 }

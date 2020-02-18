@@ -1,6 +1,7 @@
 package com.example.myorder.services;
 
 import com.example.myorder.api.dtos.CreateOrderItemDto;
+import com.example.myorder.api.dtos.OrderItemDto;
 import com.example.myorder.entities.Order;
 import com.example.myorder.entities.OrderItem;
 import com.example.myorder.repositories.OrdemItemRepository;
@@ -31,6 +32,15 @@ public class OrderItemService {
                 .setOrder(order)
                 .setQuantity(createOrderItemDto.getQuantity());
     }
+
+    public List<OrderItemDto> buildOrderItemDtos(List<OrderItem> orderItems){
+        return orderItems.stream().map(orderItem -> new OrderItemDto()
+                .setId(orderItem.getId())
+                .setQuantity(orderItem.getQuantity())
+                .setProductResponse(productService.createProductResponseDto(orderItem.getProduct(), orderItem.getOrder().getRestaurant())))
+                .collect(Collectors.toList());
+    }
+
 
 
     /*

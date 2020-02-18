@@ -4,6 +4,7 @@ import com.example.myorder.api.dtos.CreateProductDto;
 import com.example.myorder.api.dtos.ProductResponseDto;
 import com.example.myorder.api.dtos.RestaurantResponseDto;
 import com.example.myorder.api.mappers.ProductMapper;
+import com.example.myorder.api.mappers.RestaurantMapper;
 import com.example.myorder.entities.Product;
 import com.example.myorder.entities.Restaurant;
 import com.example.myorder.exception.NotFoundExpection;
@@ -27,6 +28,12 @@ public class ProductService {
         return ProductMapper.toResponseDto(p1);
     }
 
+    public ProductResponseDto createProductResponseDto(Product product, Restaurant restaurant){
+        return new ProductResponseDto()
+                .setName(product.getName())
+                .setRestaurant(RestaurantMapper.toResponseDto(restaurant));
+    }
+
     public Product createProduct(CreateProductDto productDto){
 
         return new Product()
@@ -40,5 +47,6 @@ public class ProductService {
                 .orElseThrow(()-> new NotFoundExpection("Produto não encontrado"));
                 // TODO: estudar lambdas expressions no javinha
     }
+
 
 }
