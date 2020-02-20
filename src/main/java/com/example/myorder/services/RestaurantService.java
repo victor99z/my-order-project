@@ -2,6 +2,7 @@ package com.example.myorder.services;
 
 import com.example.myorder.api.dtos.CreateRestaurantDto;
 import com.example.myorder.api.dtos.RestaurantResponseDto;
+import com.example.myorder.api.mappers.RestaurantMapper;
 import com.example.myorder.entities.Restaurant;
 import com.example.myorder.entities.User;
 import com.example.myorder.exception.AlreadyExistsException;
@@ -9,8 +10,9 @@ import com.example.myorder.exception.NotFoundExpection;
 import com.example.myorder.repositories.RestaurantRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class RestaurantService {
@@ -59,6 +61,13 @@ public class RestaurantService {
 
         return optinal.get();
 
+    }
+
+    public List<RestaurantResponseDto> listAll(){
+        List<Restaurant> list = restaurantRepository.findAll();
+
+        return list.stream().map( restaurant -> RestaurantMapper.toResponseDto(restaurant)).collect(Collectors.toList());
+        //return list.stream().map(RestaurantMapper::toResponseDto).collect(Collectors.toList());
     }
 
 }
