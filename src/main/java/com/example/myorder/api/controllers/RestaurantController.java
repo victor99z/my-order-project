@@ -11,6 +11,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
+import java.util.List;
 
 import javax.validation.Valid;
 
@@ -34,6 +35,12 @@ public class RestaurantController {
     @GetMapping()
     public RestaurantResponseDto get(@RequestParam @Param("id") Integer id){
         return restaurantService.getById(id);
+    }
+
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping("/list")
+    public List<RestaurantResponseDto> listAll(){
+        return restaurantService.listAll();
     }
 
 }

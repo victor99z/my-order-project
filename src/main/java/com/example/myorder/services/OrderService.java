@@ -10,6 +10,9 @@ import com.example.myorder.repositories.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javassist.NotFoundException;
+import net.bytebuddy.implementation.bytecode.Throw;
+
 import java.util.List;
 
 @Service
@@ -49,6 +52,10 @@ public class OrderService {
 
     private Double calculateTotalValue(List<OrderItem> itens){
         return itens.stream().map(orderItem -> orderItem.getProduct().getValue() * orderItem.getQuantity()).reduce(0d,Double::sum);
+    }
+
+    public OrderResponseDto get(Integer id){
+        return orderRepository.findById(id).orElseThrow(() -> new NotFoundException("Pedido não encontrado")));
     }
 
 }
