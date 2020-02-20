@@ -6,7 +6,6 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
-@ApiModel("Objeto de resposta de criacao do produto")
 public class ProductResponseDto {
     @NotEmpty
     @ApiModelProperty(value = "${product.response.name}")
