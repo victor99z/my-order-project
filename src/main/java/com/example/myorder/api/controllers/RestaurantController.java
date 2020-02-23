@@ -3,6 +3,7 @@ package com.example.myorder.api.controllers;
 
 import com.example.myorder.api.dtos.CreateRestaurantDto;
 import com.example.myorder.api.dtos.RestaurantResponseDto;
+import com.example.myorder.entities.Restaurant;
 import com.example.myorder.services.RestaurantService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiParam;
@@ -31,7 +32,7 @@ public class RestaurantController {
     }
 
 
-    @ResponseStatus( HttpStatus.OK )
+    @ResponseStatus(HttpStatus.OK)
     @GetMapping()
     public RestaurantResponseDto get(@RequestParam @Param("id") Integer id){
         return restaurantService.getById(id);
@@ -41,6 +42,12 @@ public class RestaurantController {
     @GetMapping("/list")
     public List<RestaurantResponseDto> listAll(){
         return restaurantService.listAll();
+    }
+
+    @ResponseStatus(HttpStatus.OK)
+    @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
+    public void update(@RequestBody @Valid Restaurant restaurant){
+        restaurantService.updateRestaurant(restaurant);
     }
 
 }

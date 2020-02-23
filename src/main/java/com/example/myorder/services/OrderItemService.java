@@ -2,9 +2,9 @@ package com.example.myorder.services;
 
 import com.example.myorder.api.dtos.CreateOrderItemDto;
 import com.example.myorder.api.dtos.OrderItemDto;
+import com.example.myorder.api.mappers.ProductMapper;
 import com.example.myorder.entities.Order;
 import com.example.myorder.entities.OrderItem;
-import com.example.myorder.repositories.OrdemItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,8 +14,6 @@ import java.util.stream.Collectors;
 @Service
 public class OrderItemService {
 
-    @Autowired
-    private OrdemItemRepository ordemItemRepository;
     @Autowired
     private ProductService productService;
 
@@ -32,6 +30,8 @@ public class OrderItemService {
                 .setOrder(order)
                 .setQuantity(createOrderItemDto.getQuantity());
     }
+    /*
+        CODIGO FEITO NO CURSO
 
     public List<OrderItemDto> buildOrderItemDtos(List<OrderItem> orderItems){
         return orderItems.stream().map(orderItem -> new OrderItemDto()
@@ -41,10 +41,17 @@ public class OrderItemService {
                 .collect(Collectors.toList());
     }
 
+    */
+    public OrderItemDto buildOrderItemDto(OrderItem orderItem){
+        return new OrderItemDto()
+                .setId(orderItem.getId())
+                .setQuantity(orderItem.getQuantity())
+                .setProductResponse(ProductMapper.toResponseDto(orderItem.getProduct()));
+    }
 
+    public List<OrderItemDto> listItemDto(List<OrderItem> orderItems){
+        return orderItems.stream().map(this::buildOrderItemDto).collect(Collectors.toList());
+    }
 
-    /*
-     FIXME terminar o codigo, faltando funcoes
-     */
 
 }

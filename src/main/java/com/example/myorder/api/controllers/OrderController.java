@@ -30,7 +30,7 @@ public class OrderController {
 
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("/{id}")
-    public OrderResponseDto get(@RequestParam @PathVariable(name = "id") @Valid Integer id){
+    public OrderResponseDto get(@PathVariable(name = "id") @Valid Integer id){
         return orderService.get(id);
     }
 

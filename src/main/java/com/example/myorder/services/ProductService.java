@@ -2,12 +2,11 @@ package com.example.myorder.services;
 
 import com.example.myorder.api.dtos.CreateProductDto;
 import com.example.myorder.api.dtos.ProductResponseDto;
-import com.example.myorder.api.dtos.RestaurantResponseDto;
 import com.example.myorder.api.mappers.ProductMapper;
 import com.example.myorder.api.mappers.RestaurantMapper;
 import com.example.myorder.entities.Product;
 import com.example.myorder.entities.Restaurant;
-import com.example.myorder.exception.NotFoundExpection;
+import com.example.myorder.exception.NotFoundException;
 import com.example.myorder.repositories.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -47,7 +46,7 @@ public class ProductService {
 
     public Product findById(Integer id){
         return productRepository.findById(id)
-                .orElseThrow(()-> new NotFoundExpection("Produto não encontrado"));
+                .orElseThrow(()-> new NotFoundException("Produto não encontrado"));
                 // TODO: estudar lambdas expressions no javinha
     }
 

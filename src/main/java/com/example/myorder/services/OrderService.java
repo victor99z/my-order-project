@@ -6,12 +6,10 @@ import com.example.myorder.api.mappers.UserMapper;
 import com.example.myorder.entities.Order;
 import com.example.myorder.entities.OrderItem;
 import com.example.myorder.enums.OrderStatusEnum;
+import com.example.myorder.exception.NotFoundException;
 import com.example.myorder.repositories.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import javassist.NotFoundException;
-import net.bytebuddy.implementation.bytecode.Throw;
 
 import java.util.List;
 
@@ -36,7 +34,7 @@ public class OrderService {
                 .setOrderStatus(order.getStatus())
                 .setTotalValue(order.getTotalValue())
                 .setUserResponse(UserMapper.toResponseDto(order.getUser()))
-                .setItens(orderItemService.buildOrderItemDtos(order.getItems()));
+                .setItens(orderItemService.listItemDto(order.getItems()));
     }
 
     private Order createOrder(CreateOrderDto createOrderDto){
@@ -55,7 +53,15 @@ public class OrderService {
     }
 
     public OrderResponseDto get(Integer id){
-        return orderRepository.findById(id).orElseThrow(() -> new NotFoundException("Pedido não encontrado")));
+        Order order = orderRepository.findById(id).orElseThrow(() -> new NotFoundException("Pedido não encontrado"));
+
+        return new OrderResponseDto()
+                .setOrderStatus(order.getStatus())
+                .setUserResponse(UserMapper.toResponseDto(order.getUser()))
+                .setId(order.getId())
+                .setTotalValue(order.getTotalValue())
+                .setItens(orderItemService.listItemDto(order.getItems()));
     }
+
 
 }

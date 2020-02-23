@@ -3,10 +3,9 @@ package com.example.myorder.services;
 import com.example.myorder.api.dtos.CreateUserDto;
 import com.example.myorder.api.dtos.UserResponseDto;
 import com.example.myorder.api.mappers.UserMapper;
-import com.example.myorder.entities.Restaurant;
 import com.example.myorder.entities.User;
 import com.example.myorder.exception.AlreadyExistsException;
-import com.example.myorder.exception.NotFoundExpection;
+import com.example.myorder.exception.NotFoundException;
 import com.example.myorder.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -56,7 +55,7 @@ public class UserService {
     public User findById(Integer id){
         Optional<User> optinal = userRepository.findById(id);
         if(!optinal.isPresent()){
-            throw new NotFoundExpection("Resturante nao encontrado");
+            throw new NotFoundException("Resturante nao encontrado");
         }
 
         return optinal.get();
