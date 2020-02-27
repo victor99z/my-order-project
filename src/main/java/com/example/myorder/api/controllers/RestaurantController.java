@@ -38,6 +38,7 @@ public class RestaurantController {
         return restaurantService.getById(id);
     }
 
+    @CrossOrigin()
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("/list")
     public List<RestaurantResponseDto> listAll(){
