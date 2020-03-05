@@ -1,5 +1,8 @@
 package com.example.myorder.api.dtos;
 
+import io.swagger.annotations.ApiModel;
+
+@ApiModel()
 public class RestaurantResponseDto {
 
     private Integer id;

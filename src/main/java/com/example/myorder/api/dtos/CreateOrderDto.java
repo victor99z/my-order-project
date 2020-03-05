@@ -2,7 +2,6 @@ package com.example.myorder.api.dtos;
 
 
 import io.swagger.annotations.ApiModelProperty;
-
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.util.List;
